@@ -1,24 +1,35 @@
-# README
+<h3 align="center">Pokemon Team Builder</h3>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<p align="center"> A website that lets you search a database of all Pokemon including their statistics, movesets, weaknesses, etc and create/save teams of Pokemon
+    <br> 
+</p>
 
-Things you may want to cover:
+## Getting Started
+### Prerequisites
+Frontend Repo available here: https://github.com/chknwaffles/pokemontb
 
-* Ruby version
+### Installing
+OSX & Linux:
 
-* System dependencies
+Frontend:
+```
+npm install
+```
 
-* Configuration
+Backend:
+```
+bundle install
+```
+## Usage
+Users can search through all pokemon:
 
-* Database creation
+Users can look at each pokemon's stats:
 
-* Database initialization
+Users can create pokemon teams and save pokemon to a team:
 
-* How to run the test suite
+Full Demo available here: 
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Built Using
+- [PostgreSQL](https://www.postgresql.org/) - Database
+- [Ruby On Rails](https://rubyonrails.org/) - Server Framework/Environment
+- [ReactJs](https://reactjs.org/) - Web Framework
