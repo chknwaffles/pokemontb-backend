@@ -20,7 +20,18 @@ class Pokemon < ApplicationRecord
 
             new_sprites = [poke_hash.sprites.front_default, poke_hash.sprites.back_default, poke_hash.sprites.front_shiny, poke_hash.sprites.back_shiny]
             #poke_hash.moves.map { |move_e| { name: move_e.move.name, learned_at: , type: }}
-            new_poke.update(types: new_types, stats: new_stats, sprites: new_sprites)
+            moveset = []
+            poke_hash.moves.map do |move_e|
+                move_e.version_group_details.map do |version_e|
+                    if version_e.version_group.name == "red-blue"
+                        result = Hash.new
+                        result[move_e.move.name] = version_e.level_learned_at
+                        moveset.push(Oj.dump(result))
+                    end
+                end
+            end
+
+            new_poke.update(types: new_types, stats: new_stats, sprites: new_sprites, moveset: moveset)
             new_poke.save
         end
 
