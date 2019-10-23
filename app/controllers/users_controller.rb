@@ -19,4 +19,17 @@ class UsersController < ApplicationController
             render json: {errors: user.errors.full_messages}
         end
     end
+
+    def create_team
+        user = User.find(params[:id])
+        new_team = Team.create(user_id: user.id)
+
+        render json: user
+    end
+
+    def add_pokemon
+        user = User.find(params[:id])
+
+        
+    end
 end

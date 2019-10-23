@@ -1,6 +1,6 @@
 class Pokemon < ApplicationRecord
     has_many :abilities
-
+    
     def self.getAll
         for i in 1..151 do
             poke_hash = PokeApi.get(pokemon: i)
