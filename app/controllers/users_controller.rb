@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.new(email: params[:email], password: params[:password])
+        user = User.new(email: params[:user], password: params[:password])
         # byebug
         if user.save
             token = encode_token(user.id)

@@ -45,3 +45,5 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'poke-api-v2'
 
 gem 'oj'
+
+gem "jwt", "~> 2.2"
