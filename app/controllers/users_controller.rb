@@ -24,12 +24,24 @@ class UsersController < ApplicationController
         user = User.find(params[:id])
         new_team = Team.create(user_id: user.id)
 
+        byebug
         render json: user
+    end
+
+    def get_teams
+        user = User.find(params[:id])
+
+
+    end
+
+    def get_team
+        user = User.find(params[:id])
+
     end
 
     def add_pokemon
         user = User.find(params[:id])
-
+        Pokemon.find(params[:poke_id])
         
     end
 end
