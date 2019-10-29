@@ -1,8 +1,7 @@
 class AuthController < ApplicationController
     def login
-      # byebug
-      user = User.find_by(email: params[:email])
-  
+      user = User.find_by(email: params[:user])
+      byebug
       if user && user.authenticate(params[:password])
         token = encode_token(user.id)
         render json: {user: UserSerializer.new(user), token: token}

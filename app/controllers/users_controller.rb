@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     def create
         user = User.new(email: params[:user], password: params[:password])
-        # byebug
+        
         if user.save
             token = encode_token(user.id)
             render json: {user: UserSerializer.new(user), token: token}
