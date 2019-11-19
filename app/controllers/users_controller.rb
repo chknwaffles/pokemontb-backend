@@ -22,9 +22,8 @@ class UsersController < ApplicationController
 
     def create_team
         user = User.find(params[:id])
-        new_team = Team.create(user_id: user.id)
+        new_team = Team.create(user_id: user.id, name: params['_json'])
 
-        byebug
         render json: user
     end
 
