@@ -30,13 +30,15 @@ class UsersController < ApplicationController
     def get_teams
         user = User.find(params[:id])
 
-        render json: user
+        render json: user.teams
     end
 
     def get_team
         user = User.find(params[:id])
 
-        render json: user.teams
+        target_team = user.teams.find(id: params[:team_id])
+        
+        render json: target_team
     end
 
     def add_pokemon
@@ -45,7 +47,13 @@ class UsersController < ApplicationController
         new_poke = Pokemon.find(params[:poke_id])
         
         # add new poke to team
+        target_team = user.teams.find(id: params[:team_id])
 
-        render json: user
+        if target_team.pokemons.length >= 6
+            render json: { errors: 'too many pokemon on one team'}
+        else
+            target_team.pokemons.push(new_poke)
+            render json: user
+        end
     end
 end
