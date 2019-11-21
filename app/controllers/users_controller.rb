@@ -56,4 +56,14 @@ class UsersController < ApplicationController
             render json: user
         end
     end
+
+    def delete_pokemon
+        user = User.find(params[:id])
+
+        target_team = user.teams.find(id: params[:team_id])
+
+        target_team.pokemons.delete_if { |poke| poke.id == params[:poke_id] }
+
+        render json: user
+    end
 end
