@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     def get_team
         user = User.find(params[:id])
 
-        render json: team
+        render json: user.teams
     end
 
     def add_pokemon
