@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
     def create_team
         user = User.find(params[:id])
-        new_team = Team.create(user_id: user.id, name: params['_json'])
+        new_team = Team.create(user_id: user.id, name: params['_json'], pokemons: [])
 
         render json: user
     end
@@ -35,10 +35,10 @@ class UsersController < ApplicationController
 
     def get_team
         user = User.find(params[:id])
-
-        target_team = user.teams.find(id: params[:team_id])
         
-        render json: target_team
+        target_team_index = user.teams.find_index { |e| e.id == params[:team_id].to_i }
+        
+        render json: user.teams[target_team_index]
     end
 
     def add_pokemon
