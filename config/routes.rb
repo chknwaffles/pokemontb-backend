@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post "/login", to: "auth#login"
   get "/auto_login", to: "auth#auto_login"
   post '/signup', to: 'users#create'
+  get '/:id', to: 'users#show'
 end
