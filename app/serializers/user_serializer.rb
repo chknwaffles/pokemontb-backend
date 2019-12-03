@@ -1,4 +1,9 @@
 class UserSerializer < ActiveModel::Serializer
-  has_many :teams
-  attributes :id
+  attributes :id, :teams
+
+  def teams
+    object.teams.collect do |team|
+      TeamSerializer.new(team)
+    end
+  end
 end

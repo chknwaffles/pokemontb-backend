@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get "/auto_login", to: "auth#auto_login"
   post '/signup', to: 'users#create'
   get '/:id', to: 'users#show'
+
+  delete '/:id/team/:team_id/del/:poke_id', to: 'users#remove_pokemon'
 end

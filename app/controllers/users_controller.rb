@@ -22,7 +22,6 @@ class UsersController < ApplicationController
 
     def create_team
         user = User.find(params[:id])
-        byebug
         new_team = Team.create(user_id: user.id, name: params['_json'], pokemons: [])
 
         render json: user
@@ -59,12 +58,12 @@ class UsersController < ApplicationController
         end
     end
 
-    def delete_pokemon
+    def remove_pokemon
         user = User.find(params[:id])
 
-        target_team = user.teams.find(id: params[:team_id])
+        target_team = user.teams.find(params[:team_id])
 
-        target_team.pokemons.delete_if { |poke| poke.id == params[:poke_id] }
+        target_team.pokemons.destroy(params[:poke_id])
 
         render json: user
     end
